@@ -1,7 +1,11 @@
-INSERT INTO Burgers (id, name, devoured, date)
-VALUES
-	(1, 'Hamburger', 1, '2019-06-20 10:51:12'),
-	(2, 'CheeseBurger', 1, '2019-06-20 10:52:15'),
-	(3, 'Bacon Burger', 0, '2019-06-20 10:53:12'),
-	(4, 'Veggie DeluxeBurger', 0, '2019-06-20 10:54:22'),
-	(5, 'Fish Sandwich', 0, '2019-06-20 10:55:24');
+CREATE DATABASE burger_db;
+USE burger_db;
+
+
+CREATE TABLE Burgers (
+	id INT AUTO_INCREMENT NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	devoured TINYINT(1) DEFAULT '0',
+	date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id)
+)
