@@ -6,7 +6,7 @@ var burgers = {
 			cb(res);
 		});
 	},
-	//COLS AND VALS ARE ARRAYS	
+	
 	create: function(cols, vals, cb) {
 		orm.create('Burgers', cols, vals, function (res){
 			cb(res);
