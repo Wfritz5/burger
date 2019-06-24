@@ -1,16 +1,12 @@
 var mysql = require('mysql');
 var connection;
 
-
-// Open either a JawsDB MySQL connection on Heroku or a local connection
-// to MySQL
 if (UseJawsDB !== "no") {
 	console.log("Inside");
 	connection = mysql.createConnection({
 		host: "g9fej9rujq0yt0cd.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
 		port: 3306,
 		user: "yiip7dsioca9p333",
-		// Your password
 		password: "ilqz1jevereh42lm",
 	  database: "f84elkev8t6s2f8g"
 	  
