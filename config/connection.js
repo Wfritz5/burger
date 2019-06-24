@@ -1,31 +1,35 @@
-var mysql = require('mysql');
-var connection;
+//Require mysql npm package to create a connection to the mysql database.
+var mysql = require("mysql");
 
-if (UseJawsDB !== "no") {
-	console.log("Inside");
-	connection = mysql.createConnection({
-		host: "g9fej9rujq0yt0cd.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-		port: 3306,
-		user: "yiip7dsioca9p333",
-		password: "ilqz1jevereh42lm",
-	  database: "f84elkev8t6s2f8g"
-	  
-	});
-} else {
-	connection = mysql.createConnection({
-		host: "localhost",
-		port: 3306,
-		user: "root",
-		password: "Dubbydb767!",
-		database: "burger_db"
-	});
-};
-	connection.connect(function(err) {
-		if (err) {
-			console.error('error connecting: ' + err.stack);
-			return;
-		} 
-		console.log("connected as id " + connection.threadId);
-	});
-	
-	module.exports= connection;
+
+//Define database connection properties (host, user, password, and database name)
+//Use production database when deployed.
+if (process.env.JAWSDB_URL) {
+  //Heroku deployment
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+}
+
+else {
+  //else use localhost database for local development.
+  //MySQL password is passed into connection.js from the .env file using the dotenv npm package.
+  var connection = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "Dubbydb767!",
+    database: "burger_db"
+  });
+}
+
+connection.connect(function(err) {
+  //If there is an error when connecting to the database, log the error to the console.
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  //If a database connection is established, log the database thread number.
+  console.log("connected as id " + connection.threadId);
+});
+
+//Export the connection properties so that we can use them in other files.
+module.exports = connection;
