@@ -2,9 +2,14 @@ body {
 	background-color: black;
 }
 
+#buttonHungry {
+    margin: 2px;
+}
+
 .btn-primary {
 	margin-top: 20px;
 }
 .container {
 	margin-top: 40px;
 }
+
